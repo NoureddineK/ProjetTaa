@@ -1,0 +1,10 @@
+domaine/Place.class
+domaine/Sport.class
+service/SportService.class
+service/ServicePlace.class
+domaine/EntityManagerHelper.class
+repository/GenericDAO.class
+service/PersonService.class
+domaine/Person.class
+domaine/JpaTest.class
+repository/PersonDAO.class
