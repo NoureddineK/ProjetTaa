@@ -4,7 +4,9 @@
 /home/noureddine/eclipse-workspace/ProjetTaa/src/main/java/domaine/JpaTest.java
 /home/noureddine/eclipse-workspace/ProjetTaa/src/main/java/domaine/Sport.java
 /home/noureddine/eclipse-workspace/ProjetTaa/src/main/java/domaine/Person.java
+/home/noureddine/eclipse-workspace/ProjetTaa/src/main/java/repository/SportDAO.java
 /home/noureddine/eclipse-workspace/ProjetTaa/src/main/java/repository/PersonDAO.java
+/home/noureddine/eclipse-workspace/ProjetTaa/src/main/java/repository/PlaceDAO.java
 /home/noureddine/eclipse-workspace/ProjetTaa/src/main/java/service/ServicePlace.java
 /home/noureddine/eclipse-workspace/ProjetTaa/src/main/java/domaine/Place.java
 /home/noureddine/eclipse-workspace/ProjetTaa/src/main/java/repository/GenericDAO.java

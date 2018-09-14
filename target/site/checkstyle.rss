@@ -25,9 +25,9 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2018</copyright>
     <item>
-      <title>File: 11,
+      <title>File: 9,
              Errors: 0,
-             Warnings: 441,
+             Warnings: 634,
              Infos: 0
       </title>
             <link>http://maven.apache.org/checkstyle.html</link>
@@ -46,6 +46,20 @@ under the License.
           <tbody>
                           <tr>
                 <td>
+                  <a href="http://maven.apache.org/checkstyle.html#repository.PlaceDAO.java">repository/PlaceDAO.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  60
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="http://maven.apache.org/checkstyle.html#domaine.Sport.java">domaine/Sport.java</a>
                 </td>
                 <td>
@@ -60,41 +74,13 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://maven.apache.org/checkstyle.html#service.SportService.java">service/SportService.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="http://maven.apache.org/checkstyle.html#repository.PersonDAO.java">repository/PersonDAO.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  7
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://maven.apache.org/checkstyle.html#service.PersonService.java">service/PersonService.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  60
                 </td>
                 <td>
                   0
@@ -116,13 +102,13 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://maven.apache.org/checkstyle.html#repository.GenericDAO.java">repository/GenericDAO.java</a>
+                  <a href="http://maven.apache.org/checkstyle.html#repository.SportDAO.java">repository/SportDAO.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  1
+                  60
                 </td>
                 <td>
                   0
@@ -130,13 +116,13 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://maven.apache.org/checkstyle.html#service.ServicePlace.java">service/ServicePlace.java</a>
+                  <a href="http://maven.apache.org/checkstyle.html#repository.GenericDAO.java">repository/GenericDAO.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  0
+                  20
                 </td>
                 <td>
                   0
@@ -150,7 +136,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  115
+                  116
                 </td>
                 <td>
                   0
@@ -179,20 +165,6 @@ under the License.
                 </td>
                 <td>
                   68
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://maven.apache.org/checkstyle.html#log4j.properties">log4j.properties</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
                 </td>
                 <td>
                   0
