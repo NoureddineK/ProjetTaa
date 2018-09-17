@@ -25,9 +25,9 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2018</copyright>
     <item>
-      <title>File: 9,
+      <title>File: 11,
              Errors: 0,
-             Warnings: 634,
+             Warnings: 748,
              Infos: 0
       </title>
             <link>http://maven.apache.org/checkstyle.html</link>
@@ -52,7 +52,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  60
+                  74
                 </td>
                 <td>
                   0
@@ -66,7 +66,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  48
+                  47
                 </td>
                 <td>
                   0
@@ -80,7 +80,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  60
+                  90
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#service.PersonService.java">service/PersonService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  39
                 </td>
                 <td>
                   0
@@ -94,7 +108,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  116
+                  115
                 </td>
                 <td>
                   0
@@ -108,7 +122,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  60
+                  59
                 </td>
                 <td>
                   0
@@ -122,7 +136,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  20
+                  13
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://maven.apache.org/checkstyle.html#service.ServicePlace.java">service/ServicePlace.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  32
                 </td>
                 <td>
                   0
@@ -136,7 +164,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  116
+                  125
                 </td>
                 <td>
                   0

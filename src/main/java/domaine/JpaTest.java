@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import repository.PersonDAO;
+import repository.PlaceDAO;
 
 public class JpaTest {
 
@@ -28,19 +29,19 @@ public class JpaTest {
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 		try {
-			test.createEmployees();
+			test.createPersons();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		tx.commit();
 
-		test.listEmployees();
+		test.listPersons();
 
 		manager.close();
 		System.out.println(".. done");
 	}
 
-	private void createEmployees() {
+	private void createPersons() {
 		int numOfEmployees = manager.createQuery("Select a From Person a", Person.class).getResultList().size();
 		if (numOfEmployees == 0) {
 
@@ -50,36 +51,41 @@ public class JpaTest {
 			manager.persist(foot);
 
 			Person p1 = new Person("Jakab Gipsz");
-			p1.addLieu(lieu);
+			p1.addPlace(lieu);
 			p1.addSport(foot);
-//			manager.persist(p1);
-			
+			 //manager.persist(p1);
+
 			Person p2 = new Person("Captain Nemo");
-			p2.addLieu(lieu);
+			p2.addPlace(lieu);
 			p2.addSport(foot);
 			manager.persist(p2);
-			
+
 			Person p3 = new Person("Captain ");
-			p3.addLieu(lieu);
+			p3.addPlace(lieu);
 			p3.addSport(foot);
 			manager.persist(p3);
-			
+
 			Person p4 = new Person(" Nemo");
-			p4.addLieu(lieu);
+			p4.addPlace(lieu);
 			p4.addSport(foot);
 			manager.persist(p4);
+			
+			Place beaulieu = new Place("beaulieu");
+			PlaceDAO placeDAO = new PlaceDAO(manager);
+			placeDAO.Create(beaulieu);
 			
 			PersonDAO personDao = new PersonDAO(manager);
 			personDao.Create(p1);
 			Person p = (Person) personDao.Find(3);
-			
-			System.out.println("Personne : "+ p.getName());
-			
-			
+			System.out.println("Le nombre de personnes Avant : " + personDao.CountAll());
+			personDao.Delete(p2);
+			System.out.println("Personne : " + p.getName());
+			System.out.println("Le nombre de personnes Apres : " + personDao.CountAll());
+
 		}
 	}
 
-	private void listEmployees() {
+	private void listPersons() {
 		List<Person> resultList = manager.createQuery("Select a From Person a", Person.class).getResultList();
 		System.out.println("num of Personne:" + resultList.size());
 		for (Person next : resultList) {

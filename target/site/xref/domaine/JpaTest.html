@@ -16,86 +16,87 @@
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> javax.persistence.Persistence;
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> repository.PersonDAO;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../domaine/JpaTest.html">JpaTest</a> {
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  	<strong class="jxr_keyword">private</strong> EntityManager manager;
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  	<strong class="jxr_keyword">public</strong> <a href="../domaine/JpaTest.html">JpaTest</a>(EntityManager manager) {
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  		<strong class="jxr_keyword">this</strong>.manager = manager;
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  	}
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  	<em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_javadoccomment">	 * @param args</em>
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">	 */</em>
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  		EntityManagerFactory factory = Persistence.createEntityManagerFactory(<span class="jxr_string">"mysql"</span>);
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  		EntityManager manager = factory.createEntityManager();
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  		JpaTest test = <strong class="jxr_keyword">new</strong> <a href="../domaine/JpaTest.html">JpaTest</a>(manager);
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  		EntityTransaction tx = manager.getTransaction();
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		tx.begin();
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  		<strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  			test.createEmployees();
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  		} <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  			e.printStackTrace();
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  		}
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  		tx.commit();
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  		test.listEmployees();
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  		manager.close();
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  		System.out.println(<span class="jxr_string">".. done"</span>);
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  	}
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> createEmployees() {
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  		<strong class="jxr_keyword">int</strong> numOfEmployees = manager.createQuery(<span class="jxr_string">"Select a From Person a"</span>, Person.<strong class="jxr_keyword">class</strong>).getResultList().size();
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  		<strong class="jxr_keyword">if</strong> (numOfEmployees == 0) {
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  			Place lieu = <strong class="jxr_keyword">new</strong> <a href="../domaine/Place.html">Place</a>(<span class="jxr_string">"java"</span>);
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  			Sport foot = <strong class="jxr_keyword">new</strong> <a href="../domaine/Sport.html">Sport</a>(<span class="jxr_string">"foot"</span>);
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>  <em class="jxr_comment">//			manager.persist(lieu);</em>
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  <em class="jxr_comment">//			manager.persist(foot);</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> repository.PlaceDAO;
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../domaine/JpaTest.html">JpaTest</a> {
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  	<strong class="jxr_keyword">private</strong> EntityManager manager;
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  	<strong class="jxr_keyword">public</strong> <a href="../domaine/JpaTest.html">JpaTest</a>(EntityManager manager) {
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  		<strong class="jxr_keyword">this</strong>.manager = manager;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  	}
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  	<em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">	 * @param args</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment">	 */</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  		EntityManagerFactory factory = Persistence.createEntityManagerFactory(<span class="jxr_string">"mysql"</span>);
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  		EntityManager manager = factory.createEntityManager();
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  		JpaTest test = <strong class="jxr_keyword">new</strong> <a href="../domaine/JpaTest.html">JpaTest</a>(manager);
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		EntityTransaction tx = manager.getTransaction();
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  		tx.begin();
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  		<strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  			test.createPersons();
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  		} <strong class="jxr_keyword">catch</strong> (Exception e) {
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  			e.printStackTrace();
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  		}
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  		tx.commit();
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  		test.listPersons();
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  		manager.close();
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  		System.out.println(<span class="jxr_string">".. done"</span>);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  	}
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> createPersons() {
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  		<strong class="jxr_keyword">int</strong> numOfEmployees = manager.createQuery(<span class="jxr_string">"Select a From Person a"</span>, Person.<strong class="jxr_keyword">class</strong>).getResultList().size();
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  		<strong class="jxr_keyword">if</strong> (numOfEmployees == 0) {
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  			Place lieu = <strong class="jxr_keyword">new</strong> <a href="../domaine/Place.html">Place</a>(<span class="jxr_string">"java"</span>);
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  			Sport foot = <strong class="jxr_keyword">new</strong> <a href="../domaine/Sport.html">Sport</a>(<span class="jxr_string">"foot"</span>);
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  			manager.persist(lieu);
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  			manager.persist(foot);
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>  			Person p1 = <strong class="jxr_keyword">new</strong> <a href="../domaine/Person.html">Person</a>(<span class="jxr_string">"Jakab Gipsz"</span>);
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_comment">//			p1.addLieu(lieu);</em>
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_comment">//			p1.addSport(foot);</em>
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  			manager.persist(p1);
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  			
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_comment">//			Person p2 = new Person("Captain Nemo");</em>
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>  <em class="jxr_comment">//			p2.addLieu(lieu);</em>
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  <em class="jxr_comment">//			p2.addSport(foot);</em>
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  <em class="jxr_comment">//			manager.persist(p2);</em>
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  <em class="jxr_comment">//			</em>
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_comment">//			Person p3 = new Person("Captain ");</em>
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_comment">//			p3.addLieu(lieu);</em>
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_comment">//			p3.addSport(foot);</em>
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>  <em class="jxr_comment">//			manager.persist(p3);</em>
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>  <em class="jxr_comment">//			</em>
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>  <em class="jxr_comment">//			Person p4 = new Person(" Nemo");</em>
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>  <em class="jxr_comment">//			p4.addLieu(lieu);</em>
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>  <em class="jxr_comment">//			p4.addSport(foot);</em>
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>  <em class="jxr_comment">//			manager.persist(p4);</em>
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>  <em class="jxr_comment">//			</em>
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>  			PersonDAO personDao = <strong class="jxr_keyword">new</strong> <a href="../repository/PersonDAO.html">PersonDAO</a>(manager);
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>  			<em class="jxr_comment">//personDao.Create(p1);</em>
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>  			Person p = (Person) personDao.Find(1);
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>  			
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>  			System.out.println(<span class="jxr_string">"Personne : "</span>+ p.getName());
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>  			
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>  			
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>  		}
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>  	}
-<a class="jxr_linenumber" name="L82" href="#L82">82</a>  
-<a class="jxr_linenumber" name="L83" href="#L83">83</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> listEmployees() {
-<a class="jxr_linenumber" name="L84" href="#L84">84</a>  		List&lt;Person&gt; resultList = manager.createQuery(<span class="jxr_string">"Select a From Person a"</span>, Person.<strong class="jxr_keyword">class</strong>).getResultList();
-<a class="jxr_linenumber" name="L85" href="#L85">85</a>  		System.out.println(<span class="jxr_string">"num of Personne:"</span> + resultList.size());
-<a class="jxr_linenumber" name="L86" href="#L86">86</a>  		<strong class="jxr_keyword">for</strong> (Person next : resultList) {
-<a class="jxr_linenumber" name="L87" href="#L87">87</a>  			System.out.println(<span class="jxr_string">"next Personne: "</span> + next);
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>  		}
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>  	}
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>  }
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  			p1.addPlace(lieu);
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  			p1.addSport(foot);
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  			 manager.persist(p1);
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  			Person p2 = <strong class="jxr_keyword">new</strong> <a href="../domaine/Person.html">Person</a>(<span class="jxr_string">"Captain Nemo"</span>);
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>  			p2.addPlace(lieu);
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  			p2.addSport(foot);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  			manager.persist(p2);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  			Person p3 = <strong class="jxr_keyword">new</strong> <a href="../domaine/Person.html">Person</a>(<span class="jxr_string">"Captain "</span>);
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  			p3.addPlace(lieu);
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  			p3.addSport(foot);
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>  			manager.persist(p3);
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>  			Person p4 = <strong class="jxr_keyword">new</strong> <a href="../domaine/Person.html">Person</a>(<span class="jxr_string">" Nemo"</span>);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  			p4.addPlace(lieu);
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  			p4.addSport(foot);
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>  			manager.persist(p4);
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  			
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>  <em class="jxr_comment">//			PersonDAO personDao = new PersonDAO(manager);</em>
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  <em class="jxr_comment">//			personDao.Create(p1);</em>
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  <em class="jxr_comment">//			Person p = (Person) personDao.Find(3);</em>
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>  <em class="jxr_comment">//			System.out.println("Le nombre de personnes Avant : " + personDao.CountAll());</em>
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>  <em class="jxr_comment">//			personDao.Delete(p2);</em>
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  <em class="jxr_comment">//			System.out.println("Personne : " + p.getName());</em>
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  <em class="jxr_comment">//			System.out.println("Le nombre de personnes Apres : " + personDao.CountAll());</em>
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>  		}
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  	}
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>  
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> listPersons() {
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  		List&lt;Person&gt; resultList = manager.createQuery(<span class="jxr_string">"Select a From Person a"</span>, Person.<strong class="jxr_keyword">class</strong>).getResultList();
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>  		System.out.println(<span class="jxr_string">"num of Personne:"</span> + resultList.size());
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>  		<strong class="jxr_keyword">for</strong> (Person next : resultList) {
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>  			System.out.println(<span class="jxr_string">"next Personne: "</span> + next);
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>  		}
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  	}
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2018. All rights reserved.</div>

@@ -15,23 +15,23 @@ public class Person {
 	private Long id;
 
 	private String name;
-	private List<Place> lieux;
+	private List<Place> places;
 	private List<Sport> sports;
 
 	public Person() {
-		this.lieux = new ArrayList<Place>();
+		this.places = new ArrayList<Place>();
 		this.sports = new ArrayList<Sport>();
 	}
 
 	public Person(String name) {
 		this.name = name;
-		this.lieux = new ArrayList<Place>();
+		this.places = new ArrayList<Place>();
 		this.sports = new ArrayList<Sport>();
 	}
 
-	public Person(String name, ArrayList<Place> lieux, ArrayList<Sport> sports) {
+	public Person(String name, ArrayList<Place> places, ArrayList<Sport> sports) {
 		this.name = name;
-		this.lieux = lieux;
+		this.places = places;
 		this.sports = sports;
 	}
 
@@ -53,14 +53,13 @@ public class Person {
 		this.name = name;
 	}
 
-	@OneToMany
-	@JoinColumn(name = "Personne_ID")
-	public List<Place> getLieux() {
-		return lieux;
+	@ManyToMany
+	public List<Place> getPlaces() {
+		return places;
 	}
 
-	public void setLieux(List<Place> lieux) {
-		this.lieux = lieux;
+	public void setPlaces(List<Place> places) {
+		this.places = places;
 	}
 
 	@ManyToMany
@@ -76,14 +75,14 @@ public class Person {
 		this.sports.add(sport);
 	}
 
-	public void addLieu(Place lieu) {
-		this.lieux.add(lieu);
+	public void addPlace(Place place) {
+		this.places.add(place);
 	}
 
 	@Override
 	public String toString() {
-		return "Personne [id=" + id + ", name=" + name + ", lieux=" + lieux + ", sports=" + sports + ", getId()="
-				+ getId() + ", getName()=" + getName() + ", getLieux()=" + getLieux() + ", getSports()=" + getSports()
+		return "Personne [id=" + id + ", name=" + name + ", places=" + places + ", sports=" + sports + ", getId()="
+				+ getId() + ", getName()=" + getName() + ", getplaces()=" + getPlaces() + ", getSports()=" + getSports()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
