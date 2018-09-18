@@ -2,6 +2,7 @@ package domaine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import service.RestServer;
+
 @Entity
 public class Place {
-
+	private static final Logger logger = Logger.getLogger(Place.class.getName());
 	private Long id;
 
 	private String name;

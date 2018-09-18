@@ -1,31 +1,35 @@
 package repository;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 
+import domaine.EntityManagerHelper;
 import domaine.Person;
+import service.PersonService;
 
-public class PersonDAO implements GenericDAO {
+public class PersonDAO implements GenericDAO<Person> {
+	 private static final Logger logger = Logger.getLogger(PersonDAO.class.getName());
 	private EntityManager manager;
 
-	public PersonDAO(EntityManager manager) {
-		this.setManager(manager);
+	public PersonDAO() {
+		this.manager = EntityManagerHelper.getEntityManager();
 	}
 
-	public void Create(Object object) {
+	public void Create(Person object) {
 		manager.persist(object);
 	}
 
-	public void Delete(Object object) {
+	public void Delete(Person object) {
 		//Person p = (Person) object;
 		manager.remove(object);
 		//manager.createQuery("Delete a From Person a where a.id=:id").setParameter("id", p.getId());
 
 	}
 
-	public Object Find(long id) {
-		return (Person) manager.createQuery("Select a From Person a where a.id=:id",Person.class).setParameter("id", id)
+	public Person Find(long id) {
+		return manager.createQuery("Select a From Person a where a.id=:id",Person.class).setParameter("id", id)
 				.getSingleResult();
 	}
 

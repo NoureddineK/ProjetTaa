@@ -69,7 +69,7 @@ public class JpaTest {
 			p4.addSport(foot);
 			manager.persist(p4);
 			
-			PersonDAO personDao = new PersonDAO(manager);
+			PersonDAO personDao = new PersonDAO();
 			personDao.Create(p1);
 			Person p = (Person) personDao.Find(3);
 			
