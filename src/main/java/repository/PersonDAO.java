@@ -14,16 +14,20 @@ public class PersonDAO implements GenericDAO<Person> {
 	private EntityManager manager;
 
 	public PersonDAO() {
-		this.manager = EntityManagerHelper.getEntityManager();
+		this.manager = EntityManagerHelper.getEntityManager();	
 	}
 
 	public void Create(Person object) {
+		manager.getTransaction().begin();
 		manager.persist(object);
+		EntityManagerHelper.commit();
 	}
 
 	public void Delete(Person object) {
 		//Person p = (Person) object;
+		manager.getTransaction().begin();
 		manager.remove(object);
+		EntityManagerHelper.commit();
 		//manager.createQuery("Delete a From Person a where a.id=:id").setParameter("id", p.getId());
 
 	}
