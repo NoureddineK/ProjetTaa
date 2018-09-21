@@ -2,7 +2,6 @@ package myApp.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 import myApp.domaine.Person;
 import myApp.repository.PersonDAO;
 import myApp.repository.PlaceDAO;
@@ -27,45 +20,45 @@ import myApp.repository.SportDAO;
 public class PersonService {
 
 	@Autowired
-	PersonDAO personDAO;
+	PersonDAO personDao;
 
 	@Autowired
-	PlaceDAO PlaceDao;
+	PlaceDAO placeDao;
 
 	@Autowired
-	SportDAO SportDao;
+	SportDAO sportDao;
 
-	@GetMapping(value = "/{id}")
+	@GetMapping("/{id}")
 	public Person getPerson(@PathVariable("id") String id) {
-		Optional<Person> personne = personDAO.findById(Long.parseLong(id));
+		Optional<Person> personne = personDao.findById(Long.parseLong(id));
 		return personne.get();
 	}
 
 	@GetMapping("/allPersons")
 	public List<Person> findPeople() {
-		return personDAO.findAll();
+		return personDao.findAll();
 	}
 
-	@PostMapping(value = "/addPerson")
+	@PostMapping("/addPerson")
 	public void CreatePerson(@RequestBody Person p) {
-		personDAO.save(p);
+		personDao.save(p);
 	}
 
-	@PostMapping(value = "/addPersons")
+	@PostMapping("/addPersons")
 	public void CreatePersons(@RequestBody List<Person> listPerson) {
 		for (Person p : listPerson) {
-			personDAO.save(p);
+			personDao.save(p);
 		}
 	}
 
-	@DeleteMapping(value = "/delete/{id}")
+	@DeleteMapping("/delete/{id}")
 	public void deletePerson(@PathVariable("id") long id) {
-		personDAO.deleteById(id);
+		personDao.deleteById(id);
 	}
 
 	@DeleteMapping("/deleteAll")
 	public void deleteAllPerson() {
-		personDAO.deleteAll();
+		personDao.deleteAll();
 	}
 
 }
