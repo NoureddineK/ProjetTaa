@@ -1,16 +1,11 @@
-package domaine;
-
-import java.util.logging.Logger;
+package myApp.domaine;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import service.RestServer;
-
 @Entity
 public class Sport {
-	private static final Logger logger = Logger.getLogger(Sport.class.getName());
 	private Long id;
 
 	private String name;

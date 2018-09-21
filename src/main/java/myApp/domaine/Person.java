@@ -1,41 +1,35 @@
-package domaine;
+package myApp.domaine;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
-import service.RestServer;
 
 @Entity
 public class Person {
-	private static final Logger logger = Logger.getLogger(Person.class.getName());
+
 	private Long id;
 
 	private String name;
-	private List<Place> lieux;
+	private List<Place> places;
 	private List<Sport> sports;
 
 	public Person() {
-		this.lieux = new ArrayList<Place>();
+		this.places = new ArrayList<Place>();
 		this.sports = new ArrayList<Sport>();
 	}
 
 	public Person(String name) {
 		this.name = name;
-		this.lieux = new ArrayList<Place>();
+		this.places = new ArrayList<Place>();
 		this.sports = new ArrayList<Sport>();
 	}
 
-	public Person(String name, ArrayList<Place> lieux, ArrayList<Sport> sports) {
+	public Person(String name, ArrayList<Place> places, ArrayList<Sport> sports) {
 		this.name = name;
-		this.lieux = lieux;
+		this.places = places;
 		this.sports = sports;
 	}
 
@@ -57,14 +51,13 @@ public class Person {
 		this.name = name;
 	}
 
-	@OneToMany
-	@JoinColumn(name = "Personne_ID")
-	public List<Place> getLieux() {
-		return lieux;
+	@ManyToMany
+	public List<Place> getPlaces() {
+		return places;
 	}
 
-	public void setLieux(List<Place> lieux) {
-		this.lieux = lieux;
+	public void setPlaces(List<Place> places) {
+		this.places = places;
 	}
 
 	@ManyToMany
@@ -80,14 +73,14 @@ public class Person {
 		this.sports.add(sport);
 	}
 
-	public void addLieu(Place lieu) {
-		this.lieux.add(lieu);
+	public void addLieu(Place place) {
+		this.places.add(place);
 	}
 
 	@Override
 	public String toString() {
-		return "Personne [id=" + id + ", name=" + name + ", lieux=" + lieux + ", sports=" + sports + ", getId()="
-				+ getId() + ", getName()=" + getName() + ", getLieux()=" + getLieux() + ", getSports()=" + getSports()
+		return "Personne [id=" + id + ", name=" + name + ", lieux=" + places + ", sports=" + sports + ", getId()="
+				+ getId() + ", getName()=" + getName() + ", getLieux()=" + getPlaces() + ", getSports()=" + getSports()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
