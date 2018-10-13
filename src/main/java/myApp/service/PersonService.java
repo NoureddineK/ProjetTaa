@@ -2,6 +2,9 @@ package myApp.service;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +20,8 @@ import myApp.repository.SportDAO;
 
 @RestController
 @RequestMapping("/person")
-public class PersonService {
+public class PersonService implements Services<Person> {
+	static final Logger LOGGER = LoggerFactory.getLogger(PersonService.class);
 
 	@Autowired
 	PersonDAO personDao;
@@ -28,37 +32,43 @@ public class PersonService {
 	@Autowired
 	SportDAO sportDao;
 
-	@GetMapping("/{id}")
-	public Person getPerson(@PathVariable("id") String id) {
-		Optional<Person> personne = personDao.findById(Long.parseLong(id));
-		return personne.get();
+	@Override
+	public Person getObject(@PathVariable("id") String id) {
+		Optional<Person> person = personDao.findById(Long.parseLong(id));
+		return person.get();
 	}
 
-	@GetMapping("/allPersons")
-	public List<Person> findPeople() {
+	@Override
+	public List<Person> getAllObjects() {
 		return personDao.findAll();
 	}
 
-	@PostMapping("/addPerson")
-	public void CreatePerson(@RequestBody Person p) {
+	@Override
+	public void CreateObject(@RequestBody Person p) {
 		personDao.save(p);
 	}
 
-	@PostMapping("/addPersons")
-	public void CreatePersons(@RequestBody List<Person> listPerson) {
+	@Override
+	public void CreateObjects(@RequestBody List<Person> listPerson) {
 		for (Person p : listPerson) {
 			personDao.save(p);
 		}
 	}
 
-	@DeleteMapping("/delete/{id}")
-	public void deletePerson(@PathVariable("id") long id) {
+	@Override
+
+	public void deleteObject(@PathVariable("id") long id) {
 		personDao.deleteById(id);
 	}
 
-	@DeleteMapping("/deleteAll")
-	public void deleteAllPerson() {
+	@Override
+	public void deleteAllObjects() {
 		personDao.deleteAll();
+	}
+
+	@Override
+	public Person FinByName(@PathVariable("name") String name) {
+		return personDao.finByName(name);
 	}
 
 }
