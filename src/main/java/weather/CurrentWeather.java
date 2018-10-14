@@ -1,21 +1,18 @@
 package weather;
 
+import utils.Api;
+
 public class CurrentWeather {
-	private String timezone;
+	private String cityName;
 	private double temperature;
 	private long time;
 	private double humidity;
-	private double precipProbability;
-	private String summary;
+	private String description;
 
-	public String getTimezone() {
-		return timezone;
+	public CurrentWeather(String cityName) {
+		this.cityName = cityName;
 	}
-
-	public void setTimezone(String timezone) {
-		this.timezone = timezone;
-	}
-
+	
 	public double getTemperature() {
 		return temperature;
 	}
@@ -40,20 +37,18 @@ public class CurrentWeather {
 		this.humidity = humidity;
 	}
 
-	public double getPrecipProbability() {
-		return precipProbability;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setPrecipProbability(double precipProbability) {
-		this.precipProbability = precipProbability;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getSummary() {
-		return summary;
-	}
-
-	public void setSummary(String summary) {
-		this.summary = summary;
+	@Override
+	public String toString() {
+		return this.cityName +" [temperature=" + String.format("%.0f", temperature) + ", time=" + Api.getFormattedDate(time) + ", humidity=" + humidity + ", description="
+				+ description + "]";
 	}
 
 }

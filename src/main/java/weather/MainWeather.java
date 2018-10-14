@@ -1,6 +1,8 @@
 package weather;
 
 import java.io.IOException;
+
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
@@ -12,12 +14,15 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import utils.Api;
 
-public class MainFrame {
-	public MainFrame(String title) {
+public class MainWeather {
+	private String cityName;
+
+	public MainWeather(String cityName) {
+		this.cityName = cityName;
 		double latitude = 48.117266;
 		double longitude = -1.6777926;
 		OkHttpClient client = new OkHttpClient();
-		Request request = new Request.Builder().url(Api.getFinalUrl("Nantes")).build();
+		Request request = new Request.Builder().url(Api.getFinalUrl(this.cityName)).build();
 
 		client.newCall(request).enqueue(new Callback() {
 			@Override
@@ -30,26 +35,20 @@ public class MainFrame {
 				try (ResponseBody body = response.body()) {
 					if (response.isSuccessful()) {
 						String json_data = body.string();
+						CurrentWeather currentWeather = new CurrentWeather(cityName);
 						JSONObject json_object = (JSONObject) JSONValue.parseWithException(json_data);
-						System.out.println(json_object);
-						
-						 JSONObject currently = (JSONObject) JSONValue
-						 .parseWithException(json_object.get("currently").toString());
-						 
-						 CurrentWeather currentWeather = new CurrentWeather();
-						 currentWeather.setTimezone((String) json_object.get("timezone"));
-						 currentWeather.setTime((Long) currently.get("time"));
-						 currentWeather.setTemperature(Double.parseDouble(currently.get("temperature")
-						 + "")); currentWeather.setSummary((String) currently.get("summary"));
-						 currentWeather
-						 .setPrecipProbability(Double.parseDouble(currently.get("precipProbability") +
-						 "")); currentWeather.setHumidity(Double.parseDouble(currently.get("humidity")
-						 + ""));
-						 
-						 System.out.println("Time zone + time : " + currentWeather.getTimezone() +
-						 " / " + Api.getFormattedDate(currentWeather.getTime(),
-						 currentWeather.getTimezone()));
-						 
+						JSONArray weather = (JSONArray) JSONValue
+								.parseWithException(json_object.get("weather").toString());
+						JSONObject main = (JSONObject) JSONValue.parseWithException(json_object.get("main").toString());
+						JSONObject description = (JSONObject) JSONValue.parseWithException(weather.get(0).toString());
+
+						currentWeather.setTime((Long) json_object.get("dt"));
+						currentWeather.setDescription((String) description.get("description"));
+						currentWeather
+								.setTemperature(Api.convertTempKeltoCel(Double.parseDouble(main.get("temp") + "")));
+						currentWeather.setHumidity(Double.parseDouble(main.get("humidity") + ""));
+						System.out.println(currentWeather.toString());
+
 					} else {
 						System.err.println("Une erreur est survenue ");
 					}
