@@ -47,7 +47,7 @@ public class CurrentWeather {
 
 	@Override
 	public String toString() {
-		return this.cityName +" [temperature=" + String.format("%.0f", temperature) + ", time=" + Api.getFormattedDate(time) + ", humidity=" + humidity + ", description="
+		return this.cityName +" [temperature=" + String.format("%.0f", temperature) + "°C, time=" + Api.getFormattedDate(time) + ", humidity=" + humidity + ", description="
 				+ description + "]";
 	}
 

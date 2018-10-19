@@ -4,10 +4,17 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import io.swagger.annotations.Api;
+
+
+@CrossOrigin
+@Api(value="Services", produces =MediaType.APPLICATION_JSON_VALUE)
 public interface Services<T> {
 	static final Logger LOGGER = LoggerFactory.getLogger(Services.class);
 

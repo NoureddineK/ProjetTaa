@@ -1,6 +1,7 @@
 package myApp.domaine;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ public class Person {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Person.class);
 	private Long id;
 	private String name;
+	private String password;
 	private List<Place> places;
 	private List<Sport> sports;
 

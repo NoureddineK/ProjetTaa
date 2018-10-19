@@ -16,11 +16,10 @@ import utils.Api;
 
 public class MainWeather {
 	private String cityName;
-
+	private CurrentWeather currentWeather;
+	
 	public MainWeather(String cityName) {
 		this.cityName = cityName;
-		double latitude = 48.117266;
-		double longitude = -1.6777926;
 		OkHttpClient client = new OkHttpClient();
 		Request request = new Request.Builder().url(Api.getFinalUrl(this.cityName)).build();
 
@@ -35,7 +34,7 @@ public class MainWeather {
 				try (ResponseBody body = response.body()) {
 					if (response.isSuccessful()) {
 						String json_data = body.string();
-						CurrentWeather currentWeather = new CurrentWeather(cityName);
+						 currentWeather = new CurrentWeather(cityName);
 						JSONObject json_object = (JSONObject) JSONValue.parseWithException(json_data);
 						JSONArray weather = (JSONArray) JSONValue
 								.parseWithException(json_object.get("weather").toString());
@@ -48,6 +47,7 @@ public class MainWeather {
 								.setTemperature(Api.convertTempKeltoCel(Double.parseDouble(main.get("temp") + "")));
 						currentWeather.setHumidity(Double.parseDouble(main.get("humidity") + ""));
 						System.out.println(currentWeather.toString());
+					
 
 					} else {
 						System.err.println("Une erreur est survenue ");
@@ -57,5 +57,12 @@ public class MainWeather {
 				}
 			}
 		});
+
+		
+	}
+	public CurrentWeather getWeather() throws InterruptedException {
+		Thread.sleep(2000);
+		return currentWeather;
+		
 	}
 }

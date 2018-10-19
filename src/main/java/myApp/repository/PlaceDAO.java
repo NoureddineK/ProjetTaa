@@ -8,15 +8,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import myApp.domaine.Person;
 import myApp.domaine.Place;
 
 @Transactional
 public interface PlaceDAO extends JpaRepository<Place, Long> {
 	static final Logger LOGGER = LoggerFactory.getLogger(PlaceDAO.class);
-	String _findByName = "SELECT p FROM Place p WHERE p.name = :name";
+	String _findByName = "SELECT p FROM Place p WHERE p.id = :id";
 
 	@Query(_findByName)
-	public Place finByName(@Param("name") String name);
+	public Place finByName(@Param("id") String id);
 
 }
