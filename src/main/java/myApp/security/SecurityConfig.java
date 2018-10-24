@@ -23,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.formLogin();
 		http.authorizeRequests().antMatchers("/person/*").hasRole("USER");
+
+		http.authorizeRequests().antMatchers("/place/*","/sport/*").hasRole("ADMIN");
 	}
 
 	@Bean
