@@ -1,5 +1,7 @@
 package myApp.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -15,5 +17,6 @@ public interface SportDAO extends JpaRepository<Sport, Long> {
 	String _findByName = "SELECT p FROM Sport p WHERE p.name = :name";
 
 	@Query(_findByName)
-	public Sport finByName(@Param("name") String name);
+	public Sport findByName(@Param("name") String name);
+
 }

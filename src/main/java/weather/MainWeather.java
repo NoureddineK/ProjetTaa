@@ -17,7 +17,7 @@ import utils.Api;
 public class MainWeather {
 	private String cityName;
 	private CurrentWeather currentWeather;
-	
+
 	public MainWeather(String cityName) {
 		this.cityName = cityName;
 		OkHttpClient client = new OkHttpClient();
@@ -34,7 +34,7 @@ public class MainWeather {
 				try (ResponseBody body = response.body()) {
 					if (response.isSuccessful()) {
 						String json_data = body.string();
-						 currentWeather = new CurrentWeather(cityName);
+						currentWeather = new CurrentWeather(cityName);
 						JSONObject json_object = (JSONObject) JSONValue.parseWithException(json_data);
 						JSONArray weather = (JSONArray) JSONValue
 								.parseWithException(json_object.get("weather").toString());
@@ -43,11 +43,11 @@ public class MainWeather {
 
 						currentWeather.setTime((Long) json_object.get("dt"));
 						currentWeather.setDescription((String) description.get("description"));
+						currentWeather.setId((Long) description.get("id"));
 						currentWeather
 								.setTemperature(Api.convertTempKeltoCel(Double.parseDouble(main.get("temp") + "")));
 						currentWeather.setHumidity(Double.parseDouble(main.get("humidity") + ""));
 						System.out.println(currentWeather.toString());
-					
 
 					} else {
 						System.err.println("Une erreur est survenue ");
@@ -58,11 +58,12 @@ public class MainWeather {
 			}
 		});
 
-		
 	}
+
 	public CurrentWeather getWeather() throws InterruptedException {
 		Thread.sleep(2000);
-		return currentWeather;
 		
+		return currentWeather;
+
 	}
 }

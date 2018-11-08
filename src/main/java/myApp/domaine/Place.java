@@ -16,8 +16,16 @@ import org.slf4j.LoggerFactory;
 @Entity
 public class Place {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Place.class);
+
+	@Id
+	@GeneratedValue
+	@Column(nullable = false)
 	private Long id;
+	@Column(nullable = false, unique = true)
 	private String name;
+	private long posteCode;
+
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Sport> sports;
 
 	public Place() {
@@ -30,14 +38,17 @@ public class Place {
 		sports = new ArrayList<Sport>();
 	}
 
+	public Place(String name, long posteCode) {
+		this.name = name;
+		this.posteCode = posteCode;
+		sports = new ArrayList<Sport>();
+	}
+
 	public Place(String name, List<Sport> sports) {
 		this.name = name;
 		this.sports = sports;
 	}
 
-	@Id
-	@GeneratedValue
-	@Column(nullable = false)
 	public Long getId() {
 		LOGGER.debug("getId : ");
 		return id;
@@ -48,7 +59,6 @@ public class Place {
 		this.id = id;
 	}
 
-	@Column(nullable = false)
 	public String getName() {
 		LOGGER.debug("getName : ");
 		return name;
@@ -59,7 +69,6 @@ public class Place {
 		this.name = name;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL)
 	public List<Sport> getSports() {
 		LOGGER.debug("getSports : ");
 		return sports;
@@ -73,6 +82,14 @@ public class Place {
 	public void addSport(Sport sport) {
 		LOGGER.debug("addSport : " + sport);
 		this.sports.add(sport);
+	}
+
+	public long getPosteCode() {
+		return posteCode;
+	}
+
+	public void setPosteCode(long posteCode) {
+		this.posteCode = posteCode;
 	}
 
 	@Override

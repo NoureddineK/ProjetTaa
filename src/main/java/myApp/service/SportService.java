@@ -1,12 +1,20 @@
 package myApp.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import myApp.DataModel.SportWeatherModel;
 import myApp.domaine.Sport;
 import myApp.repository.PersonDAO;
 import myApp.repository.PlaceDAO;
@@ -60,7 +68,33 @@ public class SportService implements Services<Sport> {
 
 	@Override
 	public Sport FinByName(@PathVariable("name") String name) {
-		return sportDao.finByName(name);
+		return sportDao.findByName(name);
+	}
+
+	
+	// TODO Afficher la meteo ideal pour un sport 
+	@GetMapping("/getWeatherActivity/{name}")
+	public List<String> getWeatherActivity(@PathVariable("name") String name) {
+		SportWeatherModel model = new SportWeatherModel();
+		List<String> stringList = new ArrayList<String>();
+		Map<String, List<Sport>> mapWeather = model.getSportsWeatherMapModel();
+		// Iterator<Entry<String, List<Sport>>> itr = mapWeather.entrySet().iterator();
+		List<Sport> listSport;
+
+		for (Map.Entry<String, List<Sport>> entry : mapWeather.entrySet()) {
+			String key = entry.getKey();
+			System.out.println("Key " + key);
+			List<Sport> value = entry.getValue();
+			for (Sport sport : value) {
+				System.out.println("Key2 " + key);
+				if (sport.getName() == (String) name) {
+					System.out.println("Name " + sport.getName());
+					stringList.add(key);
+				}
+			}
+		}
+
+		return stringList;
 	}
 
 }

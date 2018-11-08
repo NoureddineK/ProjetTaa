@@ -1,5 +1,7 @@
 package myApp.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,34 @@ public class WeatherService {
 
 	@Autowired
 	PlaceDAO placeDao;
-	@GetMapping("/{id}")
-	public CurrentWeather getObject(@PathVariable("id") String id) throws InterruptedException {
+
+	@GetMapping("/id/{id}")
+	public CurrentWeather getWeatherById(@PathVariable("id") String id) throws InterruptedException {
 		Optional<Place> place = placeDao.findById(Long.parseLong(id));
-		MainWeather mainFrame = new MainWeather(place.get().getName());	
+		MainWeather mainFrame = new MainWeather(place.get().getName());
 		return mainFrame.getWeather();
 	}
+
+	@GetMapping("/name/{name}")
+	public CurrentWeather getWeatherByName(@PathVariable("name") String name) throws InterruptedException {
+		Place place = placeDao.findByName(name);
+		if (place == null)
+			return null;
+		MainWeather mainFrame = new MainWeather(name);
+		return mainFrame.getWeather();
+	}
+
+	@GetMapping("/cities")
+	public List<CurrentWeather> getWeatherOfAllCities() throws InterruptedException {
+		List<CurrentWeather> listWeather = new ArrayList<CurrentWeather>();
+		List<Place> listPlaces = placeDao.findAll();
+		MainWeather mainFrame;
+
+		for (Place p : listPlaces) {
+			mainFrame = new MainWeather(p.getName());
+			listWeather.add(mainFrame.getWeather());
+		}
+		return listWeather;
+	}
+
 }

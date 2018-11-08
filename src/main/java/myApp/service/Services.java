@@ -38,5 +38,5 @@ public interface Services<T> {
 
 	@GetMapping("/finByName/{name}")
 	public T FinByName(String name);
-
+	
 }

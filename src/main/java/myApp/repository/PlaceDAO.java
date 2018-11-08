@@ -13,9 +13,9 @@ import myApp.domaine.Place;
 @Transactional
 public interface PlaceDAO extends JpaRepository<Place, Long> {
 	static final Logger LOGGER = LoggerFactory.getLogger(PlaceDAO.class);
-	String _findByName = "SELECT p FROM Place p WHERE p.id = :id";
+	String _findByName = "SELECT p FROM Place p WHERE p.name = :name";
 
 	@Query(_findByName)
-	public Place finByName(@Param("id") String id);
+	public Place findByName(@Param("name") String name);
 
 }

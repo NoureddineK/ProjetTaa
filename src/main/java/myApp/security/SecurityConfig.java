@@ -14,24 +14,27 @@
 //
 //	@Override
 //	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication().withUser("admin").password("1234").roles("ADMIN", "USER");
-//		auth.inMemoryAuthentication().withUser("user").password("1234").roles("USER");
+//		//auth.inMemoryAuthentication().withUser("admin").password("1234").roles("ADMIN", "USER");
+//	//	auth.inMemoryAuthentication().withUser("user").password("1234").roles("USER");
 //	}
 //
 //	@Override
 //	protected void configure(HttpSecurity http) throws Exception {
 //
 //		http.formLogin();
-//		http.authorizeRequests().antMatchers("/person/*").hasRole("USER");
+//		//http.authorizeRequests().antMatchers("/*").hasRole("USER");
 //
-//		http.authorizeRequests().antMatchers("/place/*","/sport/*").hasRole("ADMIN");
+//		//http.authorizeRequests().antMatchers("/place/*","/sport/*").hasRole("ADMIN");
 //	}
 //
 //	@Bean
 //	public PasswordEncoder passwordEncoder() {
 //		return new PasswordEncoder() {
 //			@Override
-//			public String encode(CharSequence rawPassword) {
+//			public String encode(CharSeq{
+//		        "id": 1,
+//		        "name": "Foot"
+//		    },uence rawPassword) {
 //				return rawPassword.toString();
 //			}
 //

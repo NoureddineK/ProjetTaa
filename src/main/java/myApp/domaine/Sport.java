@@ -11,7 +11,11 @@ import org.slf4j.LoggerFactory;
 @Entity
 public class Sport {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Sport.class);
+	@Id
+	@GeneratedValue
+	@Column(nullable = false)
 	private Long id;
+	
 	private String name;
 
 	public Sport(String name) {
@@ -21,9 +25,7 @@ public class Sport {
 	public Sport() {
 	}
 
-	@Id
-	@GeneratedValue
-	@Column(nullable = false)
+	
 	public Long getId() {
 		LOGGER.debug("getId : ");
 		return id;
@@ -34,7 +36,7 @@ public class Sport {
 		this.id = id;
 	}
 
-	@Column(nullable = false)
+	@Column(nullable = false,unique = true)
 	public String getName() {
 		LOGGER.debug("getName : ");
 		return name;
@@ -44,6 +46,7 @@ public class Sport {
 		LOGGER.debug("setName : " + name);
 		this.name = name;
 	}
+
 
 	@Override
 	public String toString() {

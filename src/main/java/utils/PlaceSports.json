@@ -1,0 +1,162 @@
+
+    {
+        "name": "Noureddine",
+        "password": "kadri",
+        "mail": "nour-k5@live.fr",
+        "places":
+
+[
+    {
+        "name": "Rennes",
+        "posteCode": 35000,
+        "sports": [{
+        "name": "Foot"
+    },
+    {
+        "name": "Handball"
+    },
+    {
+        "name": "Baseball"
+    }, {  "name": "Roller"
+    },
+    {  "name": "Rugby"
+    },
+    {  "name": "Ski"
+    }
+]
+    },
+    {
+        "name": "Nancy",
+        "posteCode": 2000,
+        "sports": [{
+        "name": "Natation"
+    },
+    {
+        "name": "pétanque"
+    },
+    {
+        "name": "Plongeon"
+    },
+{
+        "name": "Karaté"
+    },
+    {
+        "name": "Marathon"
+    },
+    {
+        "name": "marche"
+    }]
+    },
+    {
+        "name": "Paris",
+        "posteCode": 2000,
+        "sports": [{
+        "name": "Badminton"
+    },
+    {
+        "name": "Billard"
+    },
+    {
+        "name": "boxe"
+    },{
+        "name": "Volley-ball"
+    },
+    {
+        "name": "Trottinette"
+    }]
+    },
+    {
+        "name": "Nantes",
+        "posteCode": 44000,
+        "sports": [{
+        "name": "canoe-kayak"
+    },
+    {
+        "name": "Curling"
+    },
+    {
+        "name": "cyclisme"
+    },{  "name": "Snowboard"
+    },
+    {
+        "name": "Surf"
+    },
+    {
+        "name": "Taekwondo"
+    }]
+    },
+    {
+        "name": "Brest",
+        "posteCode": 29000,
+        "sports": []
+    },
+    {
+        "name": "Nice",
+        "posteCode": 8000,
+        "sports": []
+    },
+    {
+        "name": "Marseille",
+        "posteCode": 2000,
+        "sports": [ {
+        "name": "Equitation"
+    },
+    {
+        "name": "Escalade"
+    },
+    {
+        "name": "Formule 1"
+    },{
+        "name": "Tennis"
+    },
+    {
+        "name": "Voile"
+    },
+    {
+        "name": "Water-polo"
+    }]
+    },
+    {
+        "name": "Lyon",
+        "posteCode": 5000,
+        "sports": [
+{
+        "name": "Automobile"
+    },
+    {
+        "name": "Athlétisme"
+    },
+    {
+        "name": "Arts martiaux"
+    }
+]
+    },
+    {
+        "name": "Lorient",
+        "posteCode": 2000,
+        "sports": [ {
+        "name": "gymnastique"
+    },
+    {
+        "name": "Hockey sur glace"
+    },
+    {
+        "name": "Judo"
+    }]
+    },
+    {
+        "name": "Lille",
+        "posteCode": 9000,
+        "sports": [{
+        "name": "Futsal"
+    },
+    {
+        "name": "Football américain"
+    },
+    {
+        "name": "Golf"
+    }]
+    }
+]
+}
+
