@@ -15,8 +15,10 @@ public class Sport {
 	@GeneratedValue
 	@Column(nullable = false)
 	private Long id;
-	
+
 	private String name;
+
+	private Integer weatherID;
 
 	public Sport(String name) {
 		this.name = name;
@@ -25,7 +27,11 @@ public class Sport {
 	public Sport() {
 	}
 
-	
+	public Sport(String name, Integer weatherID) {
+		this.name = name;
+		this.weatherID = weatherID;
+	}
+
 	public Long getId() {
 		LOGGER.debug("getId : ");
 		return id;
@@ -36,7 +42,7 @@ public class Sport {
 		this.id = id;
 	}
 
-	@Column(nullable = false,unique = true)
+	@Column(nullable = false, unique = true)
 	public String getName() {
 		LOGGER.debug("getName : ");
 		return name;
@@ -47,6 +53,13 @@ public class Sport {
 		this.name = name;
 	}
 
+	public Integer getWeatherID() {
+		return weatherID;
+	}
+
+	public void setWeatherID(Integer weatherID) {
+		this.weatherID = weatherID;
+	}
 
 	@Override
 	public String toString() {

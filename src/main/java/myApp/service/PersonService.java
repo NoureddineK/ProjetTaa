@@ -67,26 +67,25 @@ public class PersonService implements Services<Person> {
 	}
 
 	@Override
-	public Person FinByName(@PathVariable("name") String name) {
+	public Person FindByName(@PathVariable("name") String name) {
 		return personDao.findByName(name);
 	}
 
-	@GetMapping("/getPlacesForPerson/{name}")
-	public List<Place> getPlaceForPerson(@PathVariable("name") String name) {
-		Person person = personDao.findByName(name);
-		List<Place> placeList = new ArrayList<Place>();
-		if (person != null) {
-			for (Place pl : person.getPlaces()) {
-				placeList.add(pl);
-			}
-		}
-		return placeList;
+	@GetMapping("/findByMail/{mail}")
+	public Person FindByMail(@PathVariable("mail") String mail) {
+		return personDao.findByMail(mail);
 	}
 
-	//TODO a Tester
+	// TODO a Tester
 	@PostMapping("/addPlaceToPerson/{person}/{place}")
-	public void getPlaceForPerson(@PathVariable String person, @PathVariable String place) {
+	public void addPlaceToPerson(@PathVariable String person, @PathVariable String place) {
 		Person p = personDao.findByName(person);
 		p.addPlace(placeDao.findByName(place));
 	}
+	
+	@GetMapping("/getPlacesFromPerson/{name}")
+	public List<Place> getPlacesFromPerson(@PathVariable String name){	
+		return personDao.findByName(name).getPlaces();
+	}
+
 }

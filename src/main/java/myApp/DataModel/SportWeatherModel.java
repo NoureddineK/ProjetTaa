@@ -28,9 +28,8 @@ public class SportWeatherModel {
 	SportDAO sportDao;
 	// Listes des sports definies en se basant sur l'etat de la meteo
 	// La liste globale des sports est definie dans un fichier JSON
-	private Map<String, List<Sport>> sportsWeatherMap = new HashMap<String, List<Sport>>();
+	private Map<Integer, List<Sport>> sportsWeatherMap = new HashMap<Integer, List<Sport>>();
 	private List<Sport> clearSkySports = new ArrayList<Sport>();
-	private List<Sport> showerRainSports = new ArrayList<Sport>();
 	private List<Sport> rainSports = new ArrayList<Sport>();
 	private List<Sport> thunderstormSports = new ArrayList<Sport>();
 	private List<Sport> snowSports = new ArrayList<Sport>();
@@ -48,13 +47,6 @@ public class SportWeatherModel {
 		}
 	}
 
-	private void populateShowerRainSports() {
-		int i = 8;
-		while (i < (jsonSports.size() - 3)) {
-			showerRainSports.add(jsonSports.get(i));
-			i++;
-		}
-	}
 
 	private void populateRainSports() {
 		int i = 12;
@@ -84,19 +76,13 @@ public class SportWeatherModel {
 	private void populateMap() throws FileNotFoundException, IOException, ParseException {
 		jsonSports = JsonUtils.createSports();
 		populateClearSkySports();
-		populateShowerRainSports();
 		populateRainSports();
 		populateThunderstormSports();
 		populateSnowSports();
-		sportsWeatherMap.put("clear sky", clearSkySports);
-		sportsWeatherMap.put("few clouds", clearSkySports);
-		sportsWeatherMap.put("scattered clouds", clearSkySports);
-		sportsWeatherMap.put("broken clouds", clearSkySports);
-		sportsWeatherMap.put("shower rain", showerRainSports);
-		sportsWeatherMap.put("rain", rainSports);
-		sportsWeatherMap.put("thunderstorm", thunderstormSports);
-		sportsWeatherMap.put("snow", snowSports);
-		sportsWeatherMap.put("mist", thunderstormSports);
+		sportsWeatherMap.put(800, clearSkySports);
+		sportsWeatherMap.put(500, rainSports);
+		sportsWeatherMap.put(200, thunderstormSports);//300 700
+		sportsWeatherMap.put(600, snowSports);
 	}
 
 	private void init() {
@@ -107,13 +93,13 @@ public class SportWeatherModel {
 		}
 	}
 
-	public Map<String, List<Sport>> getSportsWeatherMapModel() {
+	public Map<Integer, List<Sport>> getSportsWeatherMapModel() {
 		return this.sportsWeatherMap;
 	}
 
 	// Gestion des sports selon la meteo
 	@GetMapping("/populateModelWeather")
-	public Map<String, List<Sport>> getSportsWeatherMap() throws FileNotFoundException, IOException, ParseException {
+	public Map<Integer, List<Sport>> getSportsWeatherMap() throws FileNotFoundException, IOException, ParseException {
 		populateMap();
 		return sportsWeatherMap;
 	}

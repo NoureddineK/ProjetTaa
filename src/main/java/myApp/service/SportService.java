@@ -67,34 +67,42 @@ public class SportService implements Services<Sport> {
 	}
 
 	@Override
-	public Sport FinByName(@PathVariable("name") String name) {
+	public Sport FindByName(@PathVariable("name") String name) {
 		return sportDao.findByName(name);
 	}
 
-	
-	// TODO Afficher la meteo ideal pour un sport 
-	@GetMapping("/getWeatherActivity/{name}")
-	public List<String> getWeatherActivity(@PathVariable("name") String name) {
-		SportWeatherModel model = new SportWeatherModel();
-		List<String> stringList = new ArrayList<String>();
-		Map<String, List<Sport>> mapWeather = model.getSportsWeatherMapModel();
-		// Iterator<Entry<String, List<Sport>>> itr = mapWeather.entrySet().iterator();
-		List<Sport> listSport;
+	private boolean check(List<Sport> list, String name) {
+		for (Sport sport : list) {
 
-		for (Map.Entry<String, List<Sport>> entry : mapWeather.entrySet()) {
-			String key = entry.getKey();
-			System.out.println("Key " + key);
-			List<Sport> value = entry.getValue();
-			for (Sport sport : value) {
-				System.out.println("Key2 " + key);
-				if (sport.getName() == (String) name) {
-					System.out.println("Name " + sport.getName());
-					stringList.add(key);
-				}
+			if (sport.getName().toString() == name) {
+				return true;
 			}
 		}
+		return false;
+	}
 
-		return stringList;
+	@GetMapping("/getWeatherIdOfSport/{name}")
+	public Integer getWeatherIdOfSport(@PathVariable("name") String name) {
+		return sportDao.findByName(name).getWeatherID();
+	}
+
+	// TODO Afficher la meteo ideale pour un sport
+	@GetMapping("/getWeatherActivity/{name}")
+	public List<Integer> getWeatherActivity(@PathVariable("name") String name) {
+		SportWeatherModel model = new SportWeatherModel();
+		List<Integer> idWeatherList = new ArrayList<Integer>();
+		Map<Integer, List<Sport>> mapWeather = model.getSportsWeatherMapModel();
+		List<Sport> value;
+		Integer key;
+		for (Map.Entry<Integer, List<Sport>> entry : mapWeather.entrySet()) {
+			key = entry.getKey();
+			value = entry.getValue();
+			if (check(value, name.toString())) {
+				idWeatherList.add(key);
+				System.out.println("Key " + key);
+			}
+		}
+		return idWeatherList;
 	}
 
 }

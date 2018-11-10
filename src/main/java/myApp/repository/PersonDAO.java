@@ -14,8 +14,12 @@ public interface PersonDAO extends JpaRepository<Person, Long> {
 	static final Logger LOGGER = LoggerFactory.getLogger(PersonDAO.class);
 
 	String _findByName = "SELECT p FROM Person p WHERE p.name = :name";
-	
+	String _findByMail = "SELECT p FROM Person p WHERE p.mail = :mail";
+
 	@Query(_findByName)
 	public Person findByName(@Param("name") String name);
+
+	@Query(_findByMail)
+	public Person findByMail(@Param("mail") String mail);
 
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import myApp.domaine.Person;
 import myApp.domaine.Place;
+import myApp.domaine.Sport;
 import myApp.repository.PersonDAO;
 import myApp.repository.PlaceDAO;
 import myApp.repository.SportDAO;
@@ -69,7 +70,7 @@ public class ServicePlace implements Services<Place> {
 	}
 
 	@Override
-	public Place FinByName(@PathVariable("name") String name) {
+	public Place FindByName(@PathVariable("name") String name) {
 		return placeDao.findByName(name);
 	}
 
@@ -78,6 +79,11 @@ public class ServicePlace implements Services<Place> {
 	public void getPlaceForPerson(@PathVariable String place, @PathVariable String sport) {
 		Place p = placeDao.findByName(place);
 		p.addSport(sportDao.findByName(sport));
+	}
+
+	@GetMapping("/getSportsFromPlace/{name}")
+	public List<Sport> getSportsFromPlace(@PathVariable ("name") String name) {
+		return placeDao.findByName(name).getSports();
 	}
 
 }

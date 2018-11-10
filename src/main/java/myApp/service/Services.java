@@ -36,7 +36,7 @@ public interface Services<T> {
 	@DeleteMapping("/deleteAll")
 	public void deleteAllObjects();
 
-	@GetMapping("/finByName/{name}")
-	public T FinByName(String name);
+	@GetMapping("/findByName/{name}")
+	public T FindByName(String name);
 	
 }

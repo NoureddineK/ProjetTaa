@@ -103,9 +103,9 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Personne [id=" + id + ", name=" + name + ", lieux=" + places + ", getId()=" + getId() + ", getName()="
-				+ getName() + ", getLieux()=" + getPlaces() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+		return "Person [id=" + id + ", name=" + name + ", password=" + password + ", mail=" + mail + ", places="
+				+ places + "]";
 	}
+
 
 }

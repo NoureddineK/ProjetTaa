@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,8 +30,8 @@ public class SportPlaceModel {
 	SportDAO sportDao;
 
 	//Ajouter des sports aux Villes
-	@GetMapping("/add/{loop}")
-	private List<Place> populateSportPlaces(@PathVariable("loop") long loop) {
+	@PostMapping("/populatePlacesBySports/{loop}")
+	private void populatePlacesBySports(@PathVariable("loop") long loop) {
 		List<Place> placesList = placeDao.findAll();
 		List<Sport> sportsList = sportDao.findAll();
 		for (Place p : placesList) {
@@ -38,7 +39,15 @@ public class SportPlaceModel {
 				p.addSport(sportsList.get(MathUtils.generateInt(0, sportsList.size() - 1)));
 			}
 		}
-		return placesList;
+	}
+	
+	//TODO Probleme d'ajout pour Brest et Nice 
+	@PostMapping("/populatePlaceBySports/{name}")
+	private void populatePlaceBySports(@PathVariable("name") String name) {
+		Place place = placeDao.findByName(name);
+		List<Sport> sportsList = sportDao.findAll();
+		place.addSport(sportsList.get(MathUtils.generateInt(0, sportsList.size() - 1)));		
+		
 	}
 
 
