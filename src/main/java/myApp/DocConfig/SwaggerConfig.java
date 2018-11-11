@@ -15,7 +15,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
-//@PropertySource("classpath:swagger.properties")
 @ComponentScan(basePackages = "myApp.service")
 @Configuration
 public class SwaggerConfig {
@@ -26,18 +25,14 @@ public class SwaggerConfig {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title(title).description(description).license(LICENSE_TEXT)
-				.version(SWAGGER_API_VERSION)
-
-				.build();
+				.version(SWAGGER_API_VERSION).build();
 	}
 
 	@Bean
 	public Docket productApi() {
-		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
-				// .pathMapping("/")
-				.select().apis(RequestHandlerSelectors.basePackage("myApp.service"))
-				// .paths(PathSelectors.regex("/api"))
-				.build().consumes(new HashSet<String>(Arrays.asList("application/json")))
+		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
+				.apis(RequestHandlerSelectors.basePackage("myApp.service")).build()
+				.consumes(new HashSet<String>(Arrays.asList("application/json")))
 				.produces(new HashSet<String>(Arrays.asList("application/json")));
 
 	}

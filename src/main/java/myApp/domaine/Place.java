@@ -6,8 +6,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import org.slf4j.Logger;
@@ -25,7 +28,9 @@ public class Place {
 	private String name;
 	private long posteCode;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Sport.class)
+	@JoinTable(name = "Place_Sports")
+	@JoinColumn(name = "Place_id", referencedColumnName = "id", updatable = false, nullable = false)
 	private List<Sport> sports;
 
 	public Place() {
@@ -83,6 +88,10 @@ public class Place {
 		LOGGER.debug("addSport : " + sport);
 		this.sports.add(sport);
 	}
+	public void deleteSport(Sport sport) {
+		LOGGER.debug("deleteSport : " + sport);
+		this.sports.remove(sport);
+	}
 
 	public long getPosteCode() {
 		return posteCode;
@@ -94,8 +103,6 @@ public class Place {
 
 	@Override
 	public String toString() {
-		return "Lieu [id=" + id + ", name=" + name + ", sports=" + sports + ", getId()=" + getId() + ", getName()="
-				+ getName() + ", getSports()=" + getSports() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+		return "Lieu [id=" + id + ", name=" + name + ", sports=" + sports +  "]";
 	}
 }

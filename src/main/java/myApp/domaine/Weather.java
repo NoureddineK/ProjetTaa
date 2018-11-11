@@ -23,28 +23,31 @@ public class Weather {
 	@GeneratedValue
 	@Column(nullable = false)
 	private Long id;
-	@Column(nullable = false, unique = true)
-	private Integer weatherID;
-	@Column(nullable = false)
+	@Column(unique = true)
+	private long weatherID;
+
 	private String Description;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Sport.class)
+	@JoinTable(name = "Weather_Sports")
+	@JoinColumn(name = "Sport_id", referencedColumnName = "id", updatable = false, nullable = false)
 	private List<Sport> sports;
 
 	public Weather() {
 		this.sports = new ArrayList<Sport>();
 	}
 
-	public Weather(Integer weatherID) {
+	public Weather(long weatherID) {
 		this.weatherID = weatherID;
 		this.sports = new ArrayList<Sport>();
 	}
 
-	public Weather(Integer weatherID, ArrayList<Sport> sports) {
+	public Weather(long weatherID, ArrayList<Sport> sports) {
 		this.weatherID = weatherID;
 		this.sports = sports;
 	}
-	public Weather(Integer weatherID,String Description) {
+
+	public Weather(long weatherID, String Description) {
 		this.weatherID = weatherID;
 		this.Description = Description;
 	}
@@ -57,11 +60,11 @@ public class Weather {
 		this.id = id;
 	}
 
-	public Integer getWeatherID() {
+	public long getWeatherID() {
 		return weatherID;
 	}
 
-	public void setWeatherID(Integer weatherID) {
+	public void setWeatherID(long weatherID) {
 		this.weatherID = weatherID;
 	}
 
@@ -85,12 +88,16 @@ public class Weather {
 		LOGGER.debug("addSport : " + sport);
 		this.sports.add(sport);
 	}
+
+	public void deleteSport(Sport sport) {
+		LOGGER.debug("deleteSport : " + sport);
+		this.sports.remove(sport);
+	}
+
 	@Override
 	public String toString() {
 		return "Weather [id=" + id + ", weatherID=" + weatherID + ", Description=" + Description + ", sports=" + sports
 				+ "]";
 	}
-		
-	
-	
+
 }

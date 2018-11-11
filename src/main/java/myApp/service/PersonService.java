@@ -1,8 +1,8 @@
 package myApp.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import myApp.domaine.Person;
 import myApp.domaine.Place;
+import myApp.domaine.Sport;
 import myApp.repository.PersonDAO;
 import myApp.repository.PlaceDAO;
 import myApp.repository.SportDAO;
@@ -76,16 +78,46 @@ public class PersonService implements Services<Person> {
 		return personDao.findByMail(mail);
 	}
 
-	// TODO a Tester
 	@PostMapping("/addPlaceToPerson/{person}/{place}")
 	public void addPlaceToPerson(@PathVariable String person, @PathVariable String place) {
 		Person p = personDao.findByName(person);
 		p.addPlace(placeDao.findByName(place));
+		personDao.flush();
 	}
-	
+
+	@PostMapping("/addSportToPerson/{person}/{sport}")
+	public void addSportToPerson(@PathVariable String person, @PathVariable String sport) {
+		Person p = personDao.findByName(person);
+		p.addSport(sportDao.findByName(sport));
+		personDao.flush();
+	}
+
 	@GetMapping("/getPlacesFromPerson/{name}")
-	public List<Place> getPlacesFromPerson(@PathVariable String name){	
+	public List<Place> getPlacesFromPerson(@PathVariable String name) {
 		return personDao.findByName(name).getPlaces();
+	}
+
+	@PostMapping("/addPerson/{name}/{mail}/{mdp}")
+	public void addPerson(@PathVariable String name, @PathVariable String mail, @PathVariable String mdp) {
+		Person p = new Person(name, mail, mdp);
+		personDao.save(p);
+	}
+
+	@GetMapping("/deletePlaceFromPerson/{person}/{place}")
+	public void deletePlaceFromPerson(@PathVariable String person, @PathVariable String place) {
+		personDao.findByName(person).deletePlace(placeDao.findByName(place));
+		personDao.flush();
+	}
+
+	@GetMapping("/deleteSportFromPerson/{person}/{sport}")
+	public void deleteSportFromPerson(@PathVariable String person, @PathVariable String sport) {
+		personDao.findByName(person).deleteSport(sportDao.findByName(sport));
+		personDao.flush();
+	}
+
+	@GetMapping("/getSportsFromPerson/{name}")
+	public Set<Sport> getSportsFromPerson(@PathVariable String name) {
+		return personDao.findByName(name).getSports();
 	}
 
 }

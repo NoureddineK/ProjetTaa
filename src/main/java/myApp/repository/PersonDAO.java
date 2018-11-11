@@ -4,10 +4,11 @@ import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.jpa.repository.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
 import myApp.domaine.Person;
-import myApp.domaine.Place;
 
 @Transactional
 public interface PersonDAO extends JpaRepository<Person, Long> {

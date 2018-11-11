@@ -13,9 +13,9 @@ public class CurrentWeather {
 	public CurrentWeather(String cityName) {
 		this.setCityName(cityName);
 	}
-	
-	public double getTemperature() {
-		return temperature;
+
+	public int getTemperature() {
+		return (int) temperature;
 	}
 
 	public void setTemperature(double temperature) {
@@ -64,8 +64,8 @@ public class CurrentWeather {
 
 	@Override
 	public String toString() {
-		return this.cityName +" [Id="+this.id+", temperature=" + String.format("%.0f", temperature) + "°C, time=" + Api.getFormattedDate(time) + ", humidity=" + humidity + ", description="
-				+ description + "]";
+		return this.cityName + " [Id=" + this.id + ", temperature=" + String.format("%.0f", temperature) + "°C, time="
+				+ Api.getFormattedDate(time) + ", humidity=" + humidity + ", description=" + description + "]";
 	}
 
 }

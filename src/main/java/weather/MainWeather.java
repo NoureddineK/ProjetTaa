@@ -47,8 +47,6 @@ public class MainWeather {
 						currentWeather
 								.setTemperature(Api.convertTempKeltoCel(Double.parseDouble(main.get("temp") + "")));
 						currentWeather.setHumidity(Double.parseDouble(main.get("humidity") + ""));
-						System.out.println(currentWeather.toString());
-
 					} else {
 						System.err.println("Une erreur est survenue ");
 					}
@@ -61,9 +59,7 @@ public class MainWeather {
 	}
 
 	public CurrentWeather getWeather() throws InterruptedException {
-		Thread.sleep(2000);
-		
+		Thread.sleep(3000);
 		return currentWeather;
-
 	}
 }

@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,22 +15,16 @@ public class Sport {
 	@Id
 	@GeneratedValue
 	@Column(nullable = false)
+	@JoinColumn(name = "sport_id", referencedColumnName = "id", nullable = false, unique = true)
 	private Long id;
 
 	private String name;
 
-	private Integer weatherID;
-
-	public Sport(String name) {
-		this.name = name;
-	}
-
 	public Sport() {
 	}
 
-	public Sport(String name, Integer weatherID) {
+	public Sport(String name) {
 		this.name = name;
-		this.weatherID = weatherID;
 	}
 
 	public Long getId() {
@@ -51,14 +46,6 @@ public class Sport {
 	public void setName(String name) {
 		LOGGER.debug("setName : " + name);
 		this.name = name;
-	}
-
-	public Integer getWeatherID() {
-		return weatherID;
-	}
-
-	public void setWeatherID(Integer weatherID) {
-		this.weatherID = weatherID;
 	}
 
 	@Override

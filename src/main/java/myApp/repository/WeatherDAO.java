@@ -13,14 +13,13 @@ import myApp.domaine.Weather;
 public interface WeatherDAO extends JpaRepository<Weather, Long> {
 	static final Logger LOGGER = LoggerFactory.getLogger(PersonDAO.class);
 
-	String _findByWeatherID= "SELECT p FROM Weather p WHERE p.weatherID = :weatherID";
+	String _findByWeatherID = "SELECT p FROM Weather p WHERE p.weatherID = :weatherID";
 	String _findByDersciption = "SELECT p FROM Weather p WHERE p.Description = :Description";
 
 	@Query(_findByWeatherID)
-	public Weather findByWeatherID(@Param("weatherID") Integer weatherID);
+	public Weather findByWeatherID(@Param("weatherID") long weatherID);
 
 	@Query(_findByDersciption)
 	public Weather findByDersciption(@Param("Description") String Description);
-
 
 }

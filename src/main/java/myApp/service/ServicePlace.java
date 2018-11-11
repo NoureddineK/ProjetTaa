@@ -1,22 +1,15 @@
 package myApp.service;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import myApp.domaine.Person;
 import myApp.domaine.Place;
 import myApp.domaine.Sport;
 import myApp.repository.PersonDAO;
@@ -74,11 +67,16 @@ public class ServicePlace implements Services<Place> {
 		return placeDao.findByName(name);
 	}
 
-	// TODO a Tester
-	@PostMapping("/addSportToPlace/{place}/{sport}")
+
+	@RequestMapping("/addSportToPlace/{place}/{sport}")
 	public void getPlaceForPerson(@PathVariable String place, @PathVariable String sport) {
-		Place p = placeDao.findByName(place);
-		p.addSport(sportDao.findByName(sport));
+		placeDao.findByName(place).addSport(sportDao.findByName(sport));
+		placeDao.flush();
+	}
+	@RequestMapping("/deleteSportFromPlace/{place}/{sport}")
+	public void deleteSportFromPlace(@PathVariable String place, @PathVariable String sport) {
+		placeDao.findByName(place).deleteSport(sportDao.findByName(sport));
+		placeDao.flush();
 	}
 
 	@GetMapping("/getSportsFromPlace/{name}")
