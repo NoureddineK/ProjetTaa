@@ -11,7 +11,7 @@ Nous avons eu le libre choix de l'environnement de développement, frameworks, b
 
 Un cahier des charges détaillé nous a été fourni au début du projet.
 
-# Fonctionnalitées 
+# Fonctionnalités 
 
 ## 1.Connexion :
   La première connexion, l’utilisateur doit s'identifier en introduisant son nom et son adresse mail. Les futures connexions se font par le nom et le mot de passe choisis.
