@@ -1,4 +1,4 @@
-package utils;
+package myApp.utils;
 
 import java.awt.Component;
 import javax.swing.JOptionPane;

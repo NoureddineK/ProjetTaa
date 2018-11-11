@@ -20,8 +20,8 @@ import myApp.repository.PersonDAO;
 import myApp.repository.PlaceDAO;
 import myApp.repository.SportDAO;
 import myApp.repository.WeatherDAO;
-import utils.Api;
-import weather.MainWeather;
+import myApp.utils.Api;
+import myApp.weather.MainWeather;
 
 @Component
 public class ScheduledTasks {

@@ -1,4 +1,4 @@
-package weather;
+package myApp.weather;
 
 import java.io.IOException;
 
@@ -6,13 +6,14 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+
+import myApp.utils.Api;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import utils.Api;
 
 public class MainWeather {
 	private String cityName;

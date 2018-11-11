@@ -14,7 +14,7 @@ import myApp.domaine.Sport;
 import myApp.repository.PersonDAO;
 import myApp.repository.PlaceDAO;
 import myApp.repository.SportDAO;
-import utils.MathUtils;
+import myApp.utils.MathUtils;
 
 @RestController
 @RequestMapping("/admin/modelSport")

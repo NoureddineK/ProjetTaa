@@ -23,8 +23,8 @@ import myApp.repository.PersonDAO;
 import myApp.repository.PlaceDAO;
 import myApp.repository.SportDAO;
 import myApp.repository.WeatherDAO;
-import weather.CurrentWeather;
-import weather.MainWeather;
+import myApp.weather.CurrentWeather;
+import myApp.weather.MainWeather;
 
 @RestController
 @RequestMapping("/weather")

@@ -12,7 +12,7 @@ import myApp.domaine.Sport;
 import myApp.domaine.Weather;
 import myApp.repository.SportDAO;
 import myApp.repository.WeatherDAO;
-import utils.MathUtils;
+import myApp.utils.MathUtils;
 
 @RestController
 @RequestMapping("/admin/modelWeather")

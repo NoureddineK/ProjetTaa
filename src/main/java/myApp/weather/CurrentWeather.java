@@ -1,6 +1,6 @@
-package weather;
+package myApp.weather;
 
-import utils.Api;
+import myApp.utils.Api;
 
 public class CurrentWeather {
 	private String cityName;
