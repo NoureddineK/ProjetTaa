@@ -3,6 +3,7 @@ package myApp.DataModel;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,11 @@ public class SportPlaceModel {
 
 	@Autowired
 	SportDAO sportDao;
+
+	@GetMapping("/a")
+	private String get() {
+		return "Noureddine";
+	}
 
 	@PostMapping("/populatePlacesBySports/{loop}")
 	private void populatePlacesBySports(@PathVariable("loop") long loop) {

@@ -8,7 +8,6 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +26,6 @@ import myApp.repository.WeatherDAO;
 import weather.CurrentWeather;
 import weather.MainWeather;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/weather")
 @Api(value="WeatherService", produces =MediaType.APPLICATION_JSON_VALUE)
