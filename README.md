@@ -1,4 +1,4 @@
-# ProjetTaa
+# ProjetTaa : Week End Planner
 
 
 # Contexte
@@ -29,6 +29,7 @@ Un bouton de déconnexion est présent dans la bar de menu pour quitter le compt
 
 # 3.Récupération de données : 
   La partie `Weather` fournit la météo qui correspond à la ville saisie par  l’utilisateur. Le site proposera un ensemble d’activitées en se basant à la fois sur les villes favorites et les données météorologiques.
+  Une activité se pratique dans une ou plusieurs conditions météorologiques précises.
 
   Un email contenant les informations relatives à la météo et aux activitées et villes favorites est envoyé à tous les utilisateurs automatiquement chaque `Mercredi à 8h`.
 
@@ -42,6 +43,7 @@ Pour le transfert des données, le service `REST` été choisi.
 Pour la récupération de météo, nous avons interagi l’API `OpenWeatherMap`.
 Nous avons utilisé `SMTP Mail Sender` qui un outils permettant l’envoi des emails à partir d’un serveur `SMTP` configurable.
 Le plugin `Scheduling Tasks` est utilisé pour automatiser l’envoi de mails aux utilisateurs.
+Le schéma des services proposé par l'API sont détaillés avec le `Swagger`via l'url: `localhost:xxxx/swagger-ui.html`
 
 ## 2.Front End : 
   Nous avons choisi `Angular 5` pour la création de la partie Vue, c’est l’un des frameworks vus aux cours, nous avons opté pour ce dernier pour sa facilité d’utilisation. Angular est un framework utilisant le langage de programmation `TypeScript`. 
@@ -63,6 +65,15 @@ Nous avons géré cette fonctionnalité du côté du Front et nous avons limiter
 
 # Apport du projet:
   Ce projet était une bonne expérience, nous avons appris l’utilisation d’une large liste de technologies Web très intéressantes et nous comptons l’améliorer plus tard.
+  
+ # fonctionnalités à ajouter :
+  1. Mettre l'application sous conteneur `Docker`
+  2. Amélioration des contraintes de sécurité
+  3. Déploiement sur un serveur `Nginx`
+  4. Ajout de fonctionnalités 
+  5. Envoi de mail via le site
+  6. Ajout de sports, villes par l'utilisateur
+  7. Gestion avancée du service de météo
 
 # Conclusion: 
   Nous avons travaillé sur un projet Web basé sur des technologies utilisées dans le monde professionnel. Nous avons consolidé nos connaissances générales et appris à faire des applications plus attrayantes et plus orientées pour le monde de travail.
