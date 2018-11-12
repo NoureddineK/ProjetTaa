@@ -43,7 +43,7 @@ Pour le transfert des données, le service `REST` été choisi.
 Pour la récupération de météo, nous avons interagi l’API `OpenWeatherMap`.
 Nous avons utilisé `SMTP Mail Sender` qui un outils permettant l’envoi des emails à partir d’un serveur `SMTP` configurable.
 Le plugin `Scheduling Tasks` est utilisé pour automatiser l’envoi de mails aux utilisateurs.
-Le schéma des services proposé par l'API sont détaillés avec le `Swagger`via l'url: `localhost:xxxx/swagger-ui.html`
+Le schéma des services proposés par l'API sont détaillés avec le `Swagger`via l'url: `localhost:xxxx/swagger-ui.html`
 
 ## 2.Front End : 
   Nous avons choisi `Angular 5` pour la création de la partie Vue, c’est l’un des frameworks vus aux cours, nous avons opté pour ce dernier pour sa facilité d’utilisation. Angular est un framework utilisant le langage de programmation `TypeScript`. 
