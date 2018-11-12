@@ -17,6 +17,7 @@ import myApp.utils.MathUtils;
 @RestController
 @RequestMapping("/admin/modelWeather")
 public class WeatherModel {
+	
 	@Autowired
 	SportDAO sportDao;
 	@Autowired

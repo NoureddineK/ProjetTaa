@@ -21,18 +21,10 @@ import myApp.utils.MathUtils;
 public class SportPlaceModel {
 
 	@Autowired
-	PersonDAO personDao;
-
-	@Autowired
 	PlaceDAO placeDao;
 
 	@Autowired
 	SportDAO sportDao;
-
-	@GetMapping("/a")
-	private String get() {
-		return "Noureddine";
-	}
 
 	@PostMapping("/populatePlacesBySports/{loop}")
 	private void populatePlacesBySports(@PathVariable("loop") long loop) {
