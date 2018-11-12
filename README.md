@@ -59,7 +59,7 @@ La mise à jour des données et la récupération des bons résultats de requêt
   
   ## La gestion de sécurité avec `Spring Security`: 
 Cette étape nous avait pris légèrement de temps, spécialement la connexion au compte utilisateur et la gestion du compte admin.
-Nous avons géré cette fonctionnalité du côté du Front. 
+Nous avons géré cette fonctionnalité du côté du Front et nous avons limiter l'accès au model à l'admin. 
 
 # Apport du projet:
   Ce projet était une bonne expérience, nous avons appris l’utilisation d’une large liste de technologies Web très intéressantes et nous comptons l’améliorer plus tard.
